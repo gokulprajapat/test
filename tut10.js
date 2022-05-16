@@ -1,4 +1,6 @@
 console.log('this is notes app ');
+//refresh
+showNotes();
 //if user adds a note, add it to the localstorage
 let addBtn = document.getElementById('addBtn');
 addBtn.addEventListener('click', function (e) {
