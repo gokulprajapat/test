@@ -1,4 +1,4 @@
-console.log('this is notes app ');
+// console.log('this is notes app ');
 //refresh
 showNotes();
 //if user adds a note, add it to the localstorage
@@ -15,7 +15,7 @@ addBtn.addEventListener('click', function (e) {
     notesObj.push(addTxt.value);
     localStorage.setItem('notes', JSON.stringify(notesObj));
     addTxt.value = '';
-    console.log(notesObj);
+    // console.log(notesObj);
     showNotes();
 });
 
@@ -54,7 +54,7 @@ function showNotes() {
 //function to delete a note
 
 function deleteNote(index) {
-    console.log('I am deleting', index);
+    // console.log('I am deleting', index);
 
     let notes = localStorage.getItem('notes');
  
@@ -68,3 +68,22 @@ function deleteNote(index) {
     localStorage.setItem('notes', JSON.stringify(notesObj));
     showNotes();
 }
+
+let search=document.getElementById('searchTxt');
+
+search.addEventListener('input',function(){
+
+    let inputVal=search.value.toLowerCase();
+    // console.log('Input event fired!',inputVal);
+    let noteCards = document.getElementsByClassName('noteCard');
+    Array.from(noteCards).forEach(function(element){
+        let cardTxt = element.getElementsByTagName('p')[0].innerHTML;
+        if(cardTxt.includes(inputVal)){
+            element.style.display='block';
+        }
+        else{
+            element.style.display='none'
+        }
+    });
+
+});
